@@ -10,6 +10,9 @@ public class Shield : MonoBehaviour
     GameObject Player;
     [SerializeField]
     float rotateSpeed = 20f;
+
+
+
     private void Start()
     {
 

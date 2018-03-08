@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4707045505030216}
   - component: {fileID: 114710832732228286}
   - component: {fileID: 114497499462649552}
-  - component: {fileID: 114099916045452608}
+  - component: {fileID: 114256787736424916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -237,7 +237,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f155ce9b66def8c43996582c13294b6f, type: 2}
+  - {fileID: 2100000, guid: 1e4a7199cb117ee4b959b97db3dac9d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -401,11 +401,11 @@ MonoBehaviour:
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!114 &114099916045452608
+  m_FillOrigin: 1
+--- !u!114 &114256787736424916
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -417,8 +417,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
-  healthSlider: {fileID: 0}
+  fullHealth: {fileID: 114062110456901500}
+  FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  healthSlider: {fileID: 114999604927790306}
+  bulletDamage: 20
 --- !u!114 &114482940738731950
 MonoBehaviour:
   m_ObjectHideFlags: 1

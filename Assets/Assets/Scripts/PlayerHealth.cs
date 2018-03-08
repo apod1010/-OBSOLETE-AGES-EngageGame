@@ -1,52 +1,59 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour 
 {
-    public int startingHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
+
     public Slider healthSlider;
 
-        Animator animator;
-    //playermovement
-    //playershooting
+    [SerializeField]
+    private int damageTaken = 20;
 
-    bool isDead;
-    bool damaged;
-
-
-    private void Awake()
+    private void Start()
     {
-
-        currentHealth = startingHealth;
+        //healthSlider = GetComponentInChildren<Slider>();
+        //healthSlider.maxValue = maxHealth;
+        //healthSlider.value = healthSlider.maxValue;
+        currentHealth = maxHealth;
     }
 
-    private void Update()
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }
 
-    public void TakeDamage (int amount)
-    {
-        damaged = true;
+        //Renderer rend = GetComponent<Renderer>();
+        //rend.material.shader = Shader.Find("Specular");
 
-        currentHealth -= amount;
-
-        healthSlider.value = currentHealth;
-
-        if(currentHealth <= 0 && !isDead)
+        if (collision.gameObject.tag == "Bullet")
         {
-            Death();
+            AdjustCurrentHealth(-damageTaken);
+
+            healthSlider.value = currentHealth;
+
+            //rend.material.SetColor("_SpecColor", Color.red);
         }
     }
 
-    public void Death()
+    public void AdjustCurrentHealth(int adj)
     {
-        isDead = true;
-        Debug.Log("DEAD!");
+        currentHealth += adj;
+
+        if (currentHealth < 0)
+            currentHealth = 0;
+
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        if (maxHealth < 1)
+            maxHealth = 1;
+
+        if (currentHealth < 1)
+        {
+            Destroy(gameObject);
+        }
     }
-
-
 }
